@@ -1,0 +1,48 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "data": {
+          "ip_address": "IP address",
+          "pin": "PIN password",
+          "device_name": "Name for the device in HA"
+        },
+        "description": "Please set up MQTT host/user/pass on the device before adding this integration"
+      }
+    },
+    "error": {
+      "already_configured": "Device is already configured",
+      "already_in_progress": "Device configuration is in progress",
+      "mqtt_unavailable": "MQTT is not available",
+      "cannot_connect": "Failed to connect",
+      "unknown": "Unknown error"
+    }
+  },
+  "entity": {
+    "number": {
+      "consumption": {
+        "name": "Consumption"
+      }
+    },
+    "sensor": {
+      "voltage": {
+        "name": "Voltage"
+      },
+      "current": {
+        "name": "Current"
+      },
+      "power": {
+        "name": "Power"
+      },
+      "consumption": {
+        "name": "Consumption"
+      },
+      "power_factor": {
+        "name": "Power factor"
+      },
+      "device_temperature": {
+        "name": "Device temperature"
+      }
+    }
+  }
+}
