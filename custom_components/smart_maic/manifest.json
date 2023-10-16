@@ -1,0 +1,13 @@
+{
+  "domain": "smart_maic",
+  "name": "Smart MAIC",
+  "codeowners": ["@krasnoukhov"],
+  "config_flow": false,
+  "dependencies": [],
+  "documentation": "https://github.com/krasnoukhov/homeassistant-smart-maic",
+  "integration_type": "device",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/krasnoukhov/homeassistant-smart-maic/issues",
+  "requirements": [],
+  "version": "1.0.0-beta.0"
+}
