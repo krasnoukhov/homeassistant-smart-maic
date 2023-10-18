@@ -8,10 +8,11 @@ from urllib.parse import urlparse, urlencode
 import requests
 
 from .const import (
-    PREFIX,
+    DEVICE_ID,
     HTTP_TIMEOUT,
     IP_ADDRESS,
     PIN,
+    PREFIX,
 )
 
 
@@ -25,6 +26,7 @@ class SmartMaic:
         """Init Smart MAIC."""
         self._ip_address = data[IP_ADDRESS]
         self._pin = data[PIN]
+        self._devid = data[DEVICE_ID]
 
     def get_wdata(self) -> dict[str, Any]:
         """Get "wdata" for Smart MAIC component."""
@@ -58,6 +60,12 @@ class SmartMaic:
         """Set Smart MAIC consumption value."""
         self._login_request()
         self._get_request(page="initval", **{key: value})
+
+    def set_dry_switch(self, value: int) -> dict[str, Any]:
+        """Set Smart MAIC dry switch."""
+        self._get_request(
+            page="getdata", devid=self._devid, devpass=self._pin, pout=value
+        )
 
     def _login_request(self) -> None:
         self._get_request(page="devlogin", devpass=self._pin)

@@ -19,7 +19,7 @@ from .const import (
     PREFIX,
 )
 
-PLATFORMS = [Platform.SENSOR, Platform.NUMBER]  # , Platform.SWITCH]
+PLATFORMS = [Platform.SENSOR, Platform.NUMBER, Platform.SWITCH]
 
 _LOGGER = logging.getLogger(__name__)
 

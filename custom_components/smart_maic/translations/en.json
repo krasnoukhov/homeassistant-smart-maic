@@ -43,6 +43,11 @@
       "device_temperature": {
         "name": "Device temperature"
       }
+    },
+    "switch": {
+      "dry_switch": {
+        "name": "Dry switch"
+      }
     }
   }
 }
