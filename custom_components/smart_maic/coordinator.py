@@ -43,3 +43,11 @@ class SmartMaicCoordinator(DataUpdateCoordinator[dict[str, Any]]):
     async def async_set_consumption(self, key: str, value: float) -> None:
         """Set Smart MAIC consumption value."""
         return await self.hass.async_add_executor_job(self._set_consumption, key, value)
+
+    def _set_dry_switch(self, value: int) -> None:
+        """Set Smart MAIC dry switch value."""
+        return self._smart_maic.set_dry_switch(value=value)
+
+    async def async_set_dry_switch(self, value: int) -> None:
+        """Set Smart MAIC dry switch value."""
+        return await self.hass.async_add_executor_job(self._set_dry_switch, value)
