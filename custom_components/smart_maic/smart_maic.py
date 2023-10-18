@@ -26,7 +26,7 @@ class SmartMaic:
         """Init Smart MAIC."""
         self._ip_address = data[IP_ADDRESS]
         self._pin = data[PIN]
-        self._devid = data[DEVICE_ID]
+        self._devid = data.get(DEVICE_ID)
 
     def get_wdata(self) -> dict[str, Any]:
         """Get "wdata" for Smart MAIC component."""
