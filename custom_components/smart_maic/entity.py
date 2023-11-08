@@ -57,3 +57,11 @@ class SmartMaicEntity(CoordinatorEntity[SmartMaicCoordinator]):
             manufacturer="Smart MAIC",
             model=self._entry.data[DEVICE_TYPE],
         )
+
+    @property
+    def name(self) -> str:
+        """Return the name of the entity."""
+        original = super().name
+        key = self.entity_description.key
+        suffix = f" {key[-1]}" if key[-1] in ["1", "2", "3"] else ""
+        return f"{original}{suffix}"

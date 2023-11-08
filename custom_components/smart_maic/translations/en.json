@@ -7,13 +7,14 @@
           "pin": "PIN password",
           "device_name": "Name for the device in HA"
         },
-        "description": "Please set up MQTT host/user/pass on the device before adding this integration"
+        "description": "Please set up MQTT on the device before adding this integration"
       }
     },
     "error": {
       "already_configured": "Device is already configured",
       "already_in_progress": "Device configuration is in progress",
       "mqtt_unavailable": "MQTT is not available",
+      "mqtt_unconfigured": "Please configure MQTT host/port/credentials on the device and retry setup",
       "cannot_connect": "Failed to connect",
       "unknown": "Unknown error"
     }
@@ -34,14 +35,35 @@
       "power": {
         "name": "Power"
       },
+      "return_power": {
+        "name": "Return power"
+      },
       "consumption": {
         "name": "Consumption"
+      },
+      "return": {
+        "name": "Return"
       },
       "power_factor": {
         "name": "Power factor"
       },
       "device_temperature": {
         "name": "Device temperature"
+      },
+      "total_current": {
+        "name": "Total current"
+      },
+      "total_power": {
+        "name": "Total power"
+      },
+      "total_return_power": {
+        "name": "Total return power"
+      },
+      "total_consumption": {
+        "name": "Total consumption"
+      },
+      "total_return": {
+        "name": "Total return"
       }
     },
     "switch": {
