@@ -45,6 +45,10 @@ async def validate_input(hass: HomeAssistant, data: dict) -> dict[str, Any]:
 
     smart_maic = SmartMaic(data)
     coordinator = SmartMaicCoordinator(smart_maic, hass)
+    config = await coordinator.async_get_config()
+    if not config["serv"]:
+        raise AbortFlow("mqtt_unconfigured")
+
     config = await coordinator.async_set_mqtt_config()
     additional = {
         DEVICE_ID: config["about"][DEVICE_ID]["value"],

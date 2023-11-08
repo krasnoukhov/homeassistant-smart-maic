@@ -25,16 +25,27 @@ from .coordinator import SmartMaicCoordinator
 from .entity import SmartMaicEntity
 
 
+def phase_descriptions(index="") -> dict[str, NumberEntityDescription]:
+    """Generate entity descriptions for a given phase"""
+    return {
+        f"Wh{index}": NumberEntityDescription(
+            key=f"Wh{index}",
+            translation_key="consumption",
+            device_class=NumberDeviceClass.ENERGY,
+            mode=NumberMode.BOX,
+            native_unit_of_measurement=UnitOfEnergy.WATT_HOUR,
+            native_min_value=0,
+            native_max_value=sys.maxsize,
+            entity_registry_enabled_default=False,
+        ),
+    }
+
+
 ENTITY_DESCRIPTIONS: dict[str, NumberEntityDescription] = {
-    "Wh": NumberEntityDescription(
-        key="Wh",
-        translation_key="consumption",
-        device_class=NumberDeviceClass.ENERGY,
-        mode=NumberMode.BOX,
-        native_unit_of_measurement=UnitOfEnergy.WATT_HOUR,
-        native_min_value=0,
-        native_max_value=sys.maxsize,
-    ),
+    **phase_descriptions(""),
+    **phase_descriptions("1"),
+    **phase_descriptions("2"),
+    **phase_descriptions("3"),
 }
 
 

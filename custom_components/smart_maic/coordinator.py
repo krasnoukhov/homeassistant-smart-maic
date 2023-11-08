@@ -28,6 +28,14 @@ class SmartMaicCoordinator(DataUpdateCoordinator[dict[str, Any]]):
             name=DOMAIN,
         )
 
+    def _get_config(self) -> None:
+        """Get Smart MAIC config."""
+        return self._smart_maic.set_mqtt_config()
+
+    async def async_get_config(self) -> None:
+        """Get Smart MAIC config."""
+        return await self.hass.async_add_executor_job(self._get_config)
+
     def _set_mqtt_config(self) -> None:
         """Set Smart MAIC MQTT config."""
         return self._smart_maic.set_mqtt_config()

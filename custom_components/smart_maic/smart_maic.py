@@ -49,7 +49,7 @@ class SmartMaic:
             uname=config["uname"],
             **{"pass": config["pass"]},
             mqtt_on=1,
-            mqttint=60,
+            mqttint=5,
             separat=2,
             prefix=f"{PREFIX}/",
         )
