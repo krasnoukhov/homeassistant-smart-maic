@@ -54,6 +54,11 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     topic = "/".join([PREFIX, entry.data[DEVICE_ID], "JSON"])
     _LOGGER.debug(f"Listening for MQTT topic: {topic}")
     entry.async_on_unload(await mqtt.async_subscribe(hass, topic, async_json_received))
+    non_prefixed_topic = "/".join([entry.data[DEVICE_ID], "JSON"])
+    _LOGGER.debug(f"Listening for non-prefixed MQTT topic: {non_prefixed_topic}")
+    entry.async_on_unload(
+        await mqtt.async_subscribe(hass, non_prefixed_topic, async_json_received)
+    )
 
     try:
         async with hass.timeout.async_timeout(90):
