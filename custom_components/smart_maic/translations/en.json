@@ -13,7 +13,7 @@
     "error": {
       "already_configured": "Device is already configured",
       "already_in_progress": "Device configuration is in progress",
-      "mqtt_unavailable": "MQTT is not available",
+      "mqtt_unavailable": "Please set up Home Assistant MQTT integration",
       "mqtt_unconfigured": "Please configure MQTT host/port/credentials on the device and retry setup",
       "cannot_connect": "Failed to connect",
       "unknown": "Unknown error"
