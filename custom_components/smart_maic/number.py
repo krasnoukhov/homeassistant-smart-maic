@@ -2,6 +2,7 @@
 
 The number component allows control of charging consumption.
 """
+
 from __future__ import annotations
 
 import sys

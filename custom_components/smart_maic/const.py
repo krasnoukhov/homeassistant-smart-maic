@@ -1,4 +1,5 @@
 """Constants for the Smart Maic integration."""
+
 from homeassistant.const import CONF_IP_ADDRESS, CONF_PIN
 
 DOMAIN = "smart_maic"

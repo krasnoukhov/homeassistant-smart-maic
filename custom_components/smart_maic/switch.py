@@ -2,6 +2,7 @@
 
 The switch component allows control of charging dry switch.
 """
+
 from __future__ import annotations
 
 from homeassistant.components.switch import SwitchEntity, SwitchEntityDescription
