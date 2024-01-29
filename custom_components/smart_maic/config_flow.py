@@ -1,4 +1,5 @@
 """Config flow for Smart MAIC integration."""
+
 from __future__ import annotations
 
 import logging
@@ -79,7 +80,6 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             await self.async_set_unique_id(data[DEVICE_ID])
             self._abort_if_unique_id_configured()
 
-            _LOGGER.debug(f"Creating entry: {data}")
             return self.async_create_entry(title=info["title"], data=data)
         except ConnectionError:
             errors["base"] = "cannot_connect"

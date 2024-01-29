@@ -1,4 +1,5 @@
 """The Smart MAIC integration."""
+
 from __future__ import annotations
 
 import logging
@@ -26,8 +27,6 @@ _LOGGER = logging.getLogger(__name__)
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up Smart MAIC from a config entry."""
-    _LOGGER.debug(f"Smart MAIC entry data: {entry.data}")
-
     if not await mqtt.async_wait_for_mqtt_client(hass):
         raise ConfigEntryNotReady("MQTT is not available")
 

@@ -2,6 +2,7 @@
 
 The sensor component creates multipe sensors regarding Smart MAIC status.
 """
+
 from __future__ import annotations
 
 from typing import cast
