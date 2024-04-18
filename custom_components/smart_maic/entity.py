@@ -64,5 +64,5 @@ class SmartMaicEntity(CoordinatorEntity[SmartMaicCoordinator]):
         """Return the name of the entity."""
         original = super().name
         key = self.entity_description.key
-        suffix = f" {key[-1]}" if key[-1] in ["1", "2", "3"] else ""
+        suffix = f" {key[-1]}" if key[-1] in ["1", "2", "3", "4", "5"] else ""
         return f"{original}{suffix}"

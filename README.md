@@ -5,6 +5,7 @@ The Smart MAIC integration listens for energy data from the device via MQTT prot
 Tested with:
 * [Розумний лічильник електроенергії c WiFi D101, однофазний, стандартна версія](https://store.smart-maic.com/ua/p684214708-umnyj-schetchik-elektroenergii.html)
 * [Розумний лічильник електроенергії c WiFi D103, трифазний, розширена версія](https://store.smart-maic.com/ua/p679987290-umnyj-schetchik-elektroenergii.html)
+* [Розумний лічильник імпульсів з WiFi smart-MAIC D105](https://store.smart-maic.com/ua/p811449534-umnyj-schetchik-impulsov.html)
 
 ## Highlights
 
