@@ -64,6 +64,15 @@
       },
       "total_return": {
         "name": "Total return"
+      },
+      "point": {
+        "name": "Point"
+      },
+      "channel": {
+        "name": "Channel"
+      },
+      "total_channel": {
+        "name": "Total channel"
       }
     },
     "switch": {

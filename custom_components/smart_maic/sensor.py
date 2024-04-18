@@ -95,11 +95,49 @@ def phase_descriptions(index="") -> dict[str, SensorEntityDescription]:
     }
 
 
+def point_description(index) -> dict[str, SensorEntityDescription]:
+    """Generate entity description for a point"""
+    return {
+        f"T{index}": SensorEntityDescription(
+            key=f"T{index}",
+            translation_key="point",
+            state_class=SensorStateClass.MEASUREMENT,
+        ),
+    }
+
+
+def channel_description(index) -> dict[str, SensorEntityDescription]:
+    """Generate entity description for a channel"""
+    return {
+        f"Ch{index}": SensorEntityDescription(
+            key=f"Ch{index}",
+            translation_key="channel",
+            state_class=SensorStateClass.MEASUREMENT,
+        ),
+        f"TCh{index}": SensorEntityDescription(
+            key=f"TCh{index}",
+            translation_key="total_channel",
+            state_class=SensorStateClass.MEASUREMENT,
+        ),
+    }
+
+
 ENTITY_DESCRIPTIONS: dict[str, SensorEntityDescription] = {
+    # D101
     **phase_descriptions(""),
+    # D103
     **phase_descriptions("1"),
     **phase_descriptions("2"),
     **phase_descriptions("3"),
+    # D105
+    **point_description("1"),
+    **point_description("2"),
+    **point_description("3"),
+    **point_description("4"),
+    **point_description("5"),
+    **channel_description("1"),
+    **channel_description("2"),
+    # Common
     "Temp": SensorEntityDescription(
         key="Temp",
         translation_key="device_temperature",
@@ -112,7 +150,7 @@ ENTITY_DESCRIPTIONS: dict[str, SensorEntityDescription] = {
 
 # NOTE: dict keys here match API response
 # But we align "key" values with single phase for consistency
-TOTAL_ENTITY_DESCRIPTIONS: dict[str, SensorEntityDescription] = {
+PHASE_TOTAL_DESCRIPTIONS: dict[str, SensorEntityDescription] = {
     "A": SensorEntityDescription(
         key="A",
         translation_key="total_current",
@@ -172,13 +210,13 @@ async def async_setup_entry(
         ]
     )
 
-    # NOTE: check if we're dealing with 3-phase device
+    # NOTE: check if we're dealing with 3-phase device like D103
     if coordinator.data.get("A1"):
         async_add_entities(
             [
-                SmartMaicTotalSensor(hass, coordinator, entry, description)
-                for ent in TOTAL_ENTITY_DESCRIPTIONS
-                if (description := TOTAL_ENTITY_DESCRIPTIONS.get(ent))
+                SmartMaicPhaseTotalSensor(hass, coordinator, entry, description)
+                for ent in PHASE_TOTAL_DESCRIPTIONS
+                if (description := PHASE_TOTAL_DESCRIPTIONS.get(ent))
             ]
         )
 
@@ -193,7 +231,7 @@ class SmartMaicSensor(SmartMaicEntity, SensorEntity):
         return cast(StateType, value)
 
 
-class SmartMaicTotalSensor(SmartMaicEntity, SensorEntity):
+class SmartMaicPhaseTotalSensor(SmartMaicEntity, SensorEntity):
     """Representation of the Smart MAIC total sensor."""
 
     @property
