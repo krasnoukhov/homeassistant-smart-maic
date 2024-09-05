@@ -137,6 +137,11 @@ ENTITY_DESCRIPTIONS: dict[str, SensorEntityDescription] = {
     **point_description("5"),
     **channel_description("1"),
     **channel_description("2"),
+    "ADC": SensorEntityDescription(
+        key="ADC",
+        translation_key="adc",
+        state_class=SensorStateClass.MEASUREMENT,
+    ),
     # Common
     "Temp": SensorEntityDescription(
         key="Temp",
