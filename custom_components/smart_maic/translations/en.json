@@ -73,6 +73,9 @@
       },
       "total_channel": {
         "name": "Total channel"
+      },
+      "adc": {
+        "name": "ADC"
       }
     },
     "switch": {
