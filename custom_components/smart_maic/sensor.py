@@ -216,7 +216,7 @@ async def async_setup_entry(
     )
 
     # NOTE: check if we're dealing with 3-phase device like D103
-    if coordinator.data.get("A1"):
+    if "A1" in coordinator.data:
         async_add_entities(
             [
                 SmartMaicPhaseTotalSensor(hass, coordinator, entry, description)
