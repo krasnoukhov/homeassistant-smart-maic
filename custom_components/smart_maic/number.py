@@ -74,7 +74,7 @@ class SmartMaicNumber(SmartMaicEntity, NumberEntity):
     @property
     def native_value(self) -> int | None:
         """Return the value of the entity."""
-        return cast(int | None, self.coordinator.data[self.entity_description.key])
+        return cast(int | None, self.coordinator.data.get(self.entity_description.key))
 
     async def async_set_native_value(self, value: int) -> None:
         """Set the value of the entity."""

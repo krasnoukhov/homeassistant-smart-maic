@@ -5,6 +5,7 @@ from homeassistant.const import CONF_IP_ADDRESS, CONF_PIN
 DOMAIN = "smart_maic"
 PREFIX = "smart-maic"
 HTTP_TIMEOUT = 5
+EXPIRATION_INTERVAL = 120
 
 IP_ADDRESS = CONF_IP_ADDRESS
 PIN = CONF_PIN

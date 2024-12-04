@@ -232,7 +232,7 @@ class SmartMaicSensor(SmartMaicEntity, SensorEntity):
     @property
     def native_value(self) -> StateType:
         """Return the state of the sensor."""
-        value = self.coordinator.data[self.entity_description.key]
+        value = self.coordinator.data.get(self.entity_description.key)
         return cast(StateType, value)
 
 
