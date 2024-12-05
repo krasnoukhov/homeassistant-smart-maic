@@ -9,15 +9,17 @@ import voluptuous as vol
 
 from homeassistant import config_entries
 from homeassistant.components import mqtt
-from homeassistant.core import HomeAssistant
+from homeassistant.core import HomeAssistant, callback
 from homeassistant.data_entry_flow import AbortFlow
 import homeassistant.helpers.config_validation as cv
 
 from .const import (
-    DEVICE_NAME,
+    DEFAULT_EXPIRATION,
     DEVICE_ID,
+    DEVICE_NAME,
     DEVICE_TYPE,
     DOMAIN,
+    EXPIRATION,
     IP_ADDRESS,
     PIN,
 )
@@ -31,6 +33,14 @@ USER_SCHEMA = vol.Schema(
         vol.Required(IP_ADDRESS): cv.string,
         vol.Required(PIN): cv.string,
         vol.Required(DEVICE_NAME, default="Energy"): cv.string,
+    }
+)
+
+OPTIONS_SCHEMA = vol.Schema(
+    {
+        vol.Optional(EXPIRATION, default=DEFAULT_EXPIRATION): vol.All(
+            vol.Coerce(int), vol.Range(min=5)
+        ),
     }
 )
 
@@ -64,6 +74,14 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
     VERSION = 1
 
+    @staticmethod
+    @callback
+    def async_get_options_flow(
+        config_entry: config_entries.ConfigEntry,
+    ) -> config_entries.OptionsFlow:
+        """Create the options flow."""
+        return OptionsFlowHandler(config_entry)
+
     async def async_step_user(self, user_input=None):
         """Handle the initial step."""
         if user_input is None:
@@ -93,3 +111,27 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         return self.async_show_form(
             step_id="user", data_schema=data_schema, errors=errors
         )
+
+
+class OptionsFlowHandler(config_entries.OptionsFlow):
+    """Handle options flow for Smart MAIC."""
+
+    def __init__(self, config_entry: config_entries.ConfigEntry) -> None:
+        """Initialize options flow."""
+        self.config_entry = config_entry
+
+    async def async_step_init(
+        self, user_input: dict[str, Any] | None = None
+    ) -> config_entries.FlowResult:
+        """Manage the options."""
+        data_schema = self.add_suggested_values_to_schema(
+            OPTIONS_SCHEMA, self.config_entry.options
+        )
+
+        if user_input is None:
+            return self.async_show_form(
+                step_id="init",
+                data_schema=data_schema,
+            )
+
+        return self.async_create_entry(title="", data=user_input)
