@@ -47,8 +47,8 @@ class SmartMaicSwitch(SmartMaicEntity, SwitchEntity):
     @property
     def is_on(self) -> bool:
         """Return the status of the switch."""
-        data = self.coordinator.data.get(self.entity_description.key)
-        return data if data is None else data == 1
+        value = self.coordinator.data.get(self.entity_description.key)
+        return None if value is None else value == 1
 
     async def async_turn_on(self) -> None:
         """Switch dry switch."""

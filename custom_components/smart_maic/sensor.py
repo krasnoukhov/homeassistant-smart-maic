@@ -233,7 +233,7 @@ class SmartMaicSensor(SmartMaicEntity, SensorEntity):
     def native_value(self) -> StateType:
         """Return the state of the sensor."""
         value = self.coordinator.data.get(self.entity_description.key)
-        return cast(StateType, value)
+        return None if value is None else cast(StateType, value)
 
 
 class SmartMaicPhaseTotalSensor(SmartMaicEntity, SensorEntity):
@@ -244,5 +244,10 @@ class SmartMaicPhaseTotalSensor(SmartMaicEntity, SensorEntity):
         """Return the state of the sensor."""
         base_key = self.entity_description.key
         data = self.coordinator.data
-        value = data[f"{base_key}1"] + data[f"{base_key}2"] + data[f"{base_key}3"]
-        return cast(StateType, value)
+        if data:
+            return cast(
+                StateType,
+                data[f"{base_key}1"] + data[f"{base_key}2"] + data[f"{base_key}3"],
+            )
+        else:
+            return None
