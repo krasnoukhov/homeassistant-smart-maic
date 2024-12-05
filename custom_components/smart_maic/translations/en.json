@@ -19,6 +19,18 @@
       "unknown": "Unknown error"
     }
   },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "expiration": "Expiration of sensor data in seconds"
+        },
+        "data_description": {
+          "expiration": "Depending on the device, it sends the data every 5 or 60 seconds. This value should be higher than this interval to avoid flip-flopping of the sensor values"
+        }
+      }
+    }
+  },
   "entity": {
     "number": {
       "consumption": {

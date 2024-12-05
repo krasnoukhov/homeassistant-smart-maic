@@ -244,10 +244,11 @@ class SmartMaicPhaseTotalSensor(SmartMaicEntity, SensorEntity):
         """Return the state of the sensor."""
         base_key = self.entity_description.key
         data = self.coordinator.data
+
         if data:
             return cast(
                 StateType,
                 data[f"{base_key}1"] + data[f"{base_key}2"] + data[f"{base_key}3"],
             )
-        else:
-            return None
+
+        return None

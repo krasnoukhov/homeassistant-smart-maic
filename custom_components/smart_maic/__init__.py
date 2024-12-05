@@ -25,6 +25,12 @@ PLATFORMS = [Platform.SENSOR, Platform.NUMBER, Platform.SWITCH]
 _LOGGER = logging.getLogger(__name__)
 
 
+async def update_listener(hass, entry):
+    """Handle options update."""
+    coordinator: SmartMaicCoordinator = hass.data[DOMAIN][entry.entry_id]
+    coordinator.set_update_interval()
+
+
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up Smart MAIC from a config entry."""
     if not await mqtt.async_wait_for_mqtt_client(hass):
@@ -66,7 +72,10 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         raise ConfigEntryNotReady(f"Timeout waiting for MQTT topic {topic}") from ex
 
     _LOGGER.debug("Has JSON!")
+
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
+    entry.async_on_unload(entry.add_update_listener(update_listener))
+
     return True
 
 
