@@ -1,0 +1,87 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "data": {
+          "ip_address": "Endereço IP",
+          "pin": "Palavra-passe PIN",
+          "device_name": "Nome do dispositivo no HA"
+        },
+        "description": "Por favor, configure o MQTT no dispositivo antes de adicionar esta integração"
+      }
+    },
+    "error": {
+      "already_configured": "O dispositivo já está configurado",
+      "already_in_progress": "A configuração do dispositivo está em andamento",
+      "mqtt_unavailable": "Por favor, configure a integração MQTT no Home Assistant",
+      "mqtt_unconfigured": "Configure o host/porta/credenciais MQTT no dispositivo e tente novamente",
+      "cannot_connect": "Não foi possível ligar",
+      "unknown": "Erro desconhecido"
+    }
+  },
+  "entity": {
+    "number": {
+      "consumption": {
+        "name": "Consumo"
+      }
+    },
+    "sensor": {
+      "voltage": {
+        "name": "Voltagem"
+      },
+      "current": {
+        "name": "Corrente"
+      },
+      "power": {
+        "name": "Potência"
+      },
+      "return_power": {
+        "name": "Potência de retorno"
+      },
+      "consumption": {
+        "name": "Consumo"
+      },
+      "return": {
+        "name": "Retorno"
+      },
+      "power_factor": {
+        "name": "Fator de potência"
+      },
+      "device_temperature": {
+        "name": "Temperatura do dispositivo"
+      },
+      "total_current": {
+        "name": "Corrente total"
+      },
+      "total_power": {
+        "name": "Potência total"
+      },
+      "total_return_power": {
+        "name": "Potência total de retorno"
+      },
+      "total_consumption": {
+        "name": "Consumo total"
+      },
+      "total_return": {
+        "name": "Retorno total"
+      },
+      "point": {
+        "name": "Ponto"
+      },
+      "channel": {
+        "name": "Canal"
+      },
+      "total_channel": {
+        "name": "Canal total"
+      },
+      "adc": {
+        "name": "ADC"
+      }
+    },
+    "switch": {
+      "dry_switch": {
+        "name": "Interruptor seco"
+      }
+    }
+  }
+}
