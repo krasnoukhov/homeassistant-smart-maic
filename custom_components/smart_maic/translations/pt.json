@@ -4,19 +4,31 @@
       "user": {
         "data": {
           "ip_address": "Endereço IP",
-          "pin": "Palavra-passe PIN",
-          "device_name": "Nome do dispositivo no HA"
+          "pin": "PIN de acesso",
+          "device_name": "Nome para o dispositivo no HA"
         },
         "description": "Por favor, configure o MQTT no dispositivo antes de adicionar esta integração"
       }
     },
     "error": {
       "already_configured": "O dispositivo já está configurado",
-      "already_in_progress": "A configuração do dispositivo está em andamento",
+      "already_in_progress": "A configuração do dispositivo está em progresso",
       "mqtt_unavailable": "Por favor, configure a integração MQTT no Home Assistant",
       "mqtt_unconfigured": "Configure o host/porta/credenciais MQTT no dispositivo e tente novamente",
       "cannot_connect": "Não foi possível ligar",
       "unknown": "Erro desconhecido"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "expiration": "Expiração dos dados do sensor em segundos"
+        },
+        "data_description": {
+          "expiration": "Dependendo do dispositivo, os dados são enviados a cada 5 ou 60 segundos. Este valor deve ser superior a este intervalo para evitar a oscilação dos valores do sensor"
+        }
+      }
     }
   },
   "entity": {
@@ -57,7 +69,7 @@
         "name": "Potência total"
       },
       "total_return_power": {
-        "name": "Potência total de retorno"
+        "name": "Potência de retorno total"
       },
       "total_consumption": {
         "name": "Consumo total"
