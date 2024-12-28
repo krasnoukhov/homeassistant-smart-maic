@@ -36,7 +36,8 @@ class SmartMaicCoordinator(DataUpdateCoordinator[dict[str, Any]]):
             name=DOMAIN,
         )
 
-        self.set_update_interval()
+        if self.config_entry:
+            self.set_update_interval()
 
     def set_update_interval(self):
         """Set update interval."""

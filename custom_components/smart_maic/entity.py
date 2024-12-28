@@ -13,6 +13,7 @@ from .const import (
     DEVICE_NAME,
     DEVICE_TYPE,
     DOMAIN,
+    IP_ADDRESS,
 )
 from .coordinator import SmartMaicCoordinator
 
@@ -57,6 +58,7 @@ class SmartMaicEntity(CoordinatorEntity[SmartMaicCoordinator]):
             name=self._entry.data[DEVICE_NAME],
             manufacturer="Smart MAIC",
             model=self._entry.data[DEVICE_TYPE],
+            configuration_url=f"http://{self._entry.data[IP_ADDRESS]}",
         )
 
     @property
