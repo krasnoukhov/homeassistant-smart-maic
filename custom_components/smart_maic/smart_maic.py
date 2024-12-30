@@ -64,9 +64,8 @@ class SmartMaic:
 
     def set_dry_switch(self, value: int) -> dict[str, Any]:
         """Set Smart MAIC dry switch."""
-        self._get_request(
-            page="getdata", devid=self._devid, devpass=self._pin, pout=value
-        )
+        self._login_request()
+        self._get_request(page="pout", state=value)
 
     def _login_request(self) -> None:
         self._get_request(page="devlogin", devpass=self._pin)
