@@ -16,7 +16,6 @@ from .const import (
 from .coordinator import SmartMaicCoordinator
 from .entity import SmartMaicEntity
 
-
 ENTITY_DESCRIPTIONS: dict[str, SwitchEntityDescription] = {
     "OUT": SwitchEntityDescription(
         key="OUT", translation_key="dry_switch", icon="mdi:home-switch"

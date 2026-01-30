@@ -16,7 +16,6 @@ from .const import (
     PREFIX,
 )
 
-
 _LOGGER = logging.getLogger(__name__)
 
 
