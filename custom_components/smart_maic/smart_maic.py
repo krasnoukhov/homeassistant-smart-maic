@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import logging
 from typing import Any
+from urllib.parse import urlencode, urlparse
 
-from urllib.parse import urlparse, urlencode
 import requests
 
 from .const import (

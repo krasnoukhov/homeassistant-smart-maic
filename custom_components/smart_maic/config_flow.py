@@ -23,8 +23,8 @@ from .const import (
     IP_ADDRESS,
     PIN,
 )
-from .smart_maic import SmartMaic
 from .coordinator import SmartMaicCoordinator
+from .smart_maic import SmartMaic
 
 _LOGGER = logging.getLogger(__name__)
 

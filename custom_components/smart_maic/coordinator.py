@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from datetime import timedelta, datetime
+from datetime import datetime, timedelta
 import logging
 from typing import Any
 
@@ -10,12 +10,12 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 from homeassistant.util.dt import utcnow
 
-from .smart_maic import SmartMaic
 from .const import (
     DEFAULT_EXPIRATION,
     DOMAIN,
     EXPIRATION,
 )
+from .smart_maic import SmartMaic
 
 _LOGGER = logging.getLogger(__name__)
 
