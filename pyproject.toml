@@ -11,7 +11,7 @@ dev = ["ruff==0.16.0"]
 package = false
 
 [tool.ruff]
-# Oldest Python of the minimum HA version in hacs.json
+# Syntax must still parse on older HA installs
 target-version = "py311"
 
 [tool.ruff.lint]
