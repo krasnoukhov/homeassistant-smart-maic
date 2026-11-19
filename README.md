@@ -40,3 +40,10 @@ Tested with:
 
 * Copy the entire `custom_components/smart-maic/` directory to your server's `<config>/custom_components` directory
 * Restart Home Assistant
+
+## Development
+
+```sh
+uv run ruff format
+uv run ruff check --fix
+```

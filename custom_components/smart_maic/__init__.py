@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-import logging
 import asyncio
+import logging
 
 from homeassistant.components import mqtt
 from homeassistant.config_entries import ConfigEntry
@@ -12,13 +12,13 @@ from homeassistant.core import HomeAssistant, callback
 from homeassistant.exceptions import ConfigEntryNotReady
 from homeassistant.util.json import json_loads_object
 
-from .smart_maic import SmartMaic
-from .coordinator import SmartMaicCoordinator
 from .const import (
     DEVICE_ID,
     DOMAIN,
     PREFIX,
 )
+from .coordinator import SmartMaicCoordinator
+from .smart_maic import SmartMaic
 
 PLATFORMS = [Platform.SENSOR, Platform.NUMBER, Platform.SWITCH]
 
@@ -68,7 +68,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     try:
         async with hass.timeout.async_timeout(90):
             await wait_for_json()
-    except asyncio.TimeoutError as ex:
+    except TimeoutError as ex:
         raise ConfigEntryNotReady(f"Timeout waiting for MQTT topic {topic}") from ex
 
     _LOGGER.debug("Has JSON!")
